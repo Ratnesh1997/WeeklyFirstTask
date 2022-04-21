@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WeeklyFirstTask.Models.UserDetails>
+
+
+<div class="table-responsive">
+    <tr>
+    <td><a asp-action="Logout" asp-controller="LoginSign"  class="btn-outline-danger" >Logout</a></td>
+        </tr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone No</th>
+                <th>Gender</th>
+                <th>Action</th>
+                <
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.UserName</td>
+                    <td>@item.Email</td>
+                    <td>@item.PhoneNo</td>
+                    <td>@item.Gender</td>
+
+                    <td><a asp-action="Delete" asp-controller="LoginSign" asp-route-Id="@item.Id" class="btn-outline-danger" onclick="return confirm('Do You wan to delete Record')">Delete</a></td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
